@@ -1,0 +1,13 @@
+{
+  "name": "maybot",
+  "version": "1.0.0",
+  "description": "A friendly Discord bot",
+  "author": "Daniëlle Suurlant <danielle.suurlant@gmail.com>",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
