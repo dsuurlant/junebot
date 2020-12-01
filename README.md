@@ -1,2 +1,2 @@
-# maybot
+# junebot
 A friendly Discord bot
