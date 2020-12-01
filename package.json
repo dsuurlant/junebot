@@ -1,5 +1,5 @@
 {
-  "name": "maybot",
+  "name": "junebot",
   "version": "1.0.0",
   "description": "A friendly Discord bot",
   "author": "Daniëlle Suurlant <danielle.suurlant@gmail.com>",
@@ -8,6 +8,7 @@
     "start": "node src/server.js"
   },
   "dependencies": {
+    "discord.js": "^12.5.1",
     "express": "^4.16.1"
   }
 }

@@ -2,13 +2,22 @@ version: '3.7'
 
 services:
   node:
-    image: dsuurlant/maybot:latest
+    image: dsuurlant/junebot:latest
     build:
       context: .
-    container_name: maybot-node
+    container_name: junebot-node
     env_file:
       - .env
     volumes:
       - ./:/app
     ports:
       - ${EXTERNAL_NODE_PORT:-8080}:8080
+
+  mariadb:
+    image: mariadb:10
+    env_file:
+      - .env
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD: true
+    ports:
+      - ${EXTERNAL_DB_PORT:-3306}:3306

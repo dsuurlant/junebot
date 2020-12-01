@@ -1,16 +1,16 @@
 'use strict';
 
-const express = require('express');
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
-// Constants
-const PORT = 8080;
-const HOST = '0.0.0.0';
-
-// App
-const app = express();
-app.get('/', (req, res) => {
-	res.send('Hello World');
+client.once('ready', () => {
+	console.log("Ready!");
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+client.on('message', msg => {
+	if (msg.content === 'ping') {
+		msg.reply('Pong!');
+	}
+});
+
+client.login(process.env.DISCORD_TOKEN);
