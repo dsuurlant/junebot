@@ -1,6 +1,8 @@
 # Grab latest node image
 FROM node:15
 
+ENV NODE_ENV prod
+
 # Set workdir to /app
 WORKDIR /app
 
@@ -8,7 +10,7 @@ WORKDIR /app
 COPY package*.json /app/
 
 # Install dependencies
-RUN npm install
+RUN yarn install
 
 # Add source
 COPY . .
@@ -17,4 +19,4 @@ COPY . .
 EXPOSE 8080
 
 # Run server
-CMD ["npm", "start"]
+CMD ["sh", "-c", "yarn start-${NODE_ENV}"]
