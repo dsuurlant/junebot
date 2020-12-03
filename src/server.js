@@ -75,12 +75,9 @@ async function sendImage(message, type) {
 	const response = await loadImages(message.author.username, apiKey, apiUrl);
 
 	// see fixtures/cat_api_example.json for response structure.
-	console.log(response.data);
-	console.log(response.data[0]);
 	const imageData = response.data[0];
 	const breed = imageData.breeds[0];
-	const imageMessage = "This " + type + " is a **" + breed.name + "**. <3";
-	message.channel.send(imageMessage, { files: [ imageData.url ] });
+	message.channel.send("This " + type + " is a **" + breed.name + "**. <3", { files: [ imageData.url ] });
 }
 
 /**
@@ -100,7 +97,6 @@ async function loadImages(username, apiKey, apiUrl) {
 
 	const queryString = querystring.stringify(queryParams);
 	const url = apiUrl + `?${queryString}`;
-	console.log(url);
 
 	return axios.get(url, {headers: headers});
 }
