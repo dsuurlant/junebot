@@ -1,13 +1,19 @@
 'use strict';
 
-const Discord = require('discord.js');
+const express = require("express");
+const discord = require('discord.js');
 const querystring = require('querystring');
 const axios = require('axios');
+const client = new discord.Client();
+const app = express();
 
-const client = new Discord.Client();
+// Basic listening server that discord attaches to
+app.listen(process.env.PORT, () => {
+    console.log("Listening to port: " + process.env.PORT);
+})
 
 client.once('ready', () => {
-    console.log("Ready!");
+    console.log("Discord client connected and ready!");
 });
 
 client.on('message', message => {
@@ -46,7 +52,7 @@ async function handleInvoke(message, content) {
 
 async function sendHelp(message) {
     message.reply("I don't have a lot of options yet. Here they are:");
-    const help = new Discord.MessageEmbed()
+    const help = new discord.MessageEmbed()
         .setTitle("June's commands")
         .addField('Addressing June', 'You can ask June by typing "june", "June", "j!" or "J!".')
         .addField("`j!help`, `June help`", "Ask for help (this command!)")
