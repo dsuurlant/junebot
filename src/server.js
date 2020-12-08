@@ -83,7 +83,7 @@ async function sendImage(message, type) {
     // see fixtures/cat_api_example.json for response structure.
     const imageData = response.data[0];
     const breed = imageData.breeds[0];
-    message.channel.send("This " + type + " is a **" + breed.name + "**. <3", {files: [imageData.url]});
+    message.channel.send("This :" + type + ": is a **" + breed.name + "**! :heart:", {files: [imageData.url]});
 }
 
 /**
