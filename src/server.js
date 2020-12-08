@@ -45,9 +45,29 @@ async function handleInvoke(message, content) {
         await sendCat(message);
     } else if (content.endsWith('dog')) {
         await sendDog(message);
+    } else if (content.endsWith('counting') || message.content.equals('jc!') || message.content.equals('jc!help')) {
+        await sendCounterHelp(message);
     } else {
         message.reply("I'm still under construction, but thanks for talking to me!");
     }
+}
+
+async function sendCounterHelp(message) {
+    message.reply("You asked about counting! Here is some more info. June Counter is in development and most of these commands won't work.");
+
+    const countingHelp = new discord.MessageEmbed()
+        .setTitle("June Counter Configuration")
+        .setDescription("June can help you with a counting game!")
+        .addField("`jc!`", "the counter basic command. Typing `jc!` without specifying anything else will also display this help.")
+        .addField("`jc!channel`", "Set the current channel to the counting channel (preserves active count). Only allowed if you have 'Manage Channels' permission.")
+        .addField("`jc!current`", "Get the current counter value.")
+        .addField("`jc!server`", "Get the counter stats for this server.")
+        .addField("`jc!user`", "Get the counter stats of message user.")
+        .addField("`jc!save`", "Increases your saves by 0.2. You can do this twice a day for a max of 2.0.")
+        .addField("`jc!gift @user`", "Gift save to specified user. You can only gift 1.0 save.")
+        .addField("`jc!donate`", "Donate 0.2 of your saves to the server.");
+
+    await message.channel.send(countingHelp);
 }
 
 async function sendHelp(message) {
@@ -58,6 +78,7 @@ async function sendHelp(message) {
         .addField("`j!help`, `June help`", "Ask for help (this command!)")
         .addField("`j!cat`, `June cat`", "Ask June for a cat image!")
         .addField("`j!dog`, `June dog`", "Ask June for a dog image!")
+        .addField("testing some stuff", "<ul><li>this is an item</li><li>this is another item</li></ul>");
     await message.channel.send(help);
 }
 
