@@ -7,7 +7,8 @@ ENV NODE_ENV prod
 WORKDIR /app
 
 # Copy dependencies file
-COPY package*.json /app/
+COPY package.json /app/
+COPY yarn.lock /app/
 
 # Install dependencies
 RUN yarn install
