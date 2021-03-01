@@ -45,7 +45,7 @@ async function handleInvoke(message, content) {
         await sendCat(message);
     } else if (content.endsWith('dog')) {
         await sendDog(message);
-    } else if (content.endsWith('counting') || message.content.equals('jc!') || message.content.equals('jc!help')) {
+    } else if (content.endsWith('counting') || content.startsWith('jc!') || content === 'jc!help') {
         await sendCounterHelp(message);
     } else {
         message.reply("I'm still under construction, but thanks for talking to me!");

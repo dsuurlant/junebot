@@ -6,6 +6,7 @@ services:
     build:
       context: .
     container_name: junebot-node
+    restart: always
     env_file:
       - .env
     volumes:
